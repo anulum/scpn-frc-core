@@ -1,0 +1,13 @@
+{
+  "capabilities": [],
+  "claims": [],
+  "evidence_maturity": "architecture_only",
+  "implemented_capability_count": 0,
+  "project": "SCPN-FRC-CORE",
+  "schema": "scpn.capability-inventory.v1",
+  "schema_version": "1.0.0",
+  "source": {
+    "manifest_path": "reactor-domain.json",
+    "manifest_sha256": "3ef47f0ce3ed4a77007af61b9077346b443803b9bf73fec6c25cfa4770e70e59"
+  }
+}
