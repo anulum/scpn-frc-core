@@ -23,29 +23,34 @@ this repository until it appears in the capability inventory with evidence.
 - Local and workflow gate definitions (lint, typing, tests, coverage,
   REUSE, security audit, SBOM, documentation checks).
 
-## Planned (no implementation exists; ordering is not a commitment)
+- **Device configuration model** (landed 2026-08-31) — validated
+  separatrix/coil geometry and operational-limit objects for
+  `field_reversed_configuration` with the hard `x_s = r_s/r_c < 1`
+  invariant, the average-beta relation `<beta> = 1 - x_s^2/2`
+  (Tuszewski 1988), prolateness and wall-proximity advisories, canonical
+  digests, and the SPO registry data pin; `computational_prototype`
+  (ADR 0002, `VALIDATION.md#device-configuration-model`).
+  Formation-method classes and sustainment inventory remain future work
+  under the same capability.
 
-1. **Device configuration model** — typed configuration policy for the FRC
-   (formation-method classes, geometry and beta envelopes, sustainment
-   system inventory), with evidence-maturity target
-   `computational_prototype`.
-2. **Diagnostic and clock semantics** — declared excluded-flux and
+## Planned (no implementation exists; ordering is not a commitment)
+1. **Diagnostic and clock semantics** — declared excluded-flux and
    separatrix reconstruction conventions, interferometry and magnetics
    channels, rotational-mode identification, and clock identities aligned
    with the SCPN Phase Orchestrator semantic profile.
-3. **Safety-envelope declaration** — machine-readable operational envelope
+2. **Safety-envelope declaration** — machine-readable operational envelope
    (bank energies, density and mode margins) consumed by the CONTROL
    adapter contract.
-4. **CONTROL adapter implementation** — device-owned adapter against the
+3. **CONTROL adapter implementation** — device-owned adapter against the
    published specification, with replay fixtures and HIL evidence,
    targeting `control_research_ready` only after replay and HIL
    acceptance.
-5. **Solver seam consumption and physics migration** — versioned
+4. **Solver seam consumption and physics migration** — versioned
    consumption of exact `SCPN-FUSION-CORE` FRC seams; the architecture
    record names canonical FRC physics as a likely migration into this
    repository strictly through the family migration gate, while
    `SCPN-MIF-CORE` keeps the pulsed integration and trigger boundary.
-6. **Facility-data correlation** — preregistered acceptance contracts
+5. **Facility-data correlation** — preregistered acceptance contracts
    against identified facility or published experimental data, targeting
    `experiment_correlated` per capability.
 

@@ -16,10 +16,13 @@ repository is the designated owner of device-level truth for the
 `field_reversed_configuration` configuration of the SCPN Phase Orchestrator
 reactor registry (field-reversed compact toroid).
 
-**Evidence maturity: `architecture_only`.** The repository currently defines
-boundaries, contracts, and validation infrastructure. It implements no
-reactor capability and makes no scientific claim. The capability and claim
-inventories are empty by design and verified empty by the domain validator.
+**Evidence maturity: `computational_prototype`** (per-capability; ADR 0002).
+One capability is implemented: the device configuration model — validated
+parameter objects with documented consistency estimates, canonical
+serialisation, and a data-only SPO registry pin (`src/scpn_frc_core/`,
+evidence: `VALIDATION.md#device-configuration-model`). No parameter set
+describes any real machine; the claim inventory is empty and verified by
+the domain validator.
 
 ## Scope
 
@@ -73,11 +76,10 @@ This repository owns, for the FRC device family:
 
 This repository is not machine-ready, not safety-certified, and not
 reactor-ready. It contains no implemented solver, no controller, no
-benchmark result, no experimental correlation, no dataset, and no
-deployable artefact. Formation-method and fuel-cycle choices (including
-aneutronic ambitions) are configuration facets, not separate claims. None
-of the evidence-maturity states defined by the reactor family standard has
-been reached beyond `architecture_only`.
+benchmark result, no experimental correlation, no dataset, and no published
+artefact, and no parameter set describes or validates any real machine. Formation-method and fuel-cycle choices (including
+aneutronic ambitions) are configuration facets, not separate claims. No capability has reached any
+evidence-maturity state beyond `computational_prototype`.
 
 ## Architecture
 
