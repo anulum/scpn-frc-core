@@ -8,6 +8,11 @@ Contact: www.anulum.li | protoscience@anulum.li
 SCPN FRC Core — README
 -->
 
+<div align="center">
+  <img src="docs/assets/repo_header.png"
+       alt="SCPN FRC Core — Prolate Compact Toroid, No Toroidal Field">
+</div>
+
 # SCPN FRC Core
 
 Governed device-family repository for field-reversed configuration (FRC)

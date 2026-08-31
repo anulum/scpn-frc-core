@@ -14,6 +14,10 @@ SCPN FRC Core — CHANGELOG
 
 ### Added
 
+- Generated repository header artwork: `docs/assets/generate_header.py`
+  renders three deterministic 1280x640 images from the repository's own
+  domain surface (the prolate FRC in its confinement coil used by the
+  README, the average-beta relation, and the prolate geometry flag).
 - Modular hosted-workflow surface per the ecosystem workflow-modularity
   standard: `ci.yml` reduced to a coordinator with a stable fail-closed
   `gate` job, single-responsibility reusable workflows for static
