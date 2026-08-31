@@ -32,25 +32,30 @@ this repository until it appears in the capability inventory with evidence.
   (ADR 0002, `VALIDATION.md#device-configuration-model`).
   Formation-method classes and sustainment inventory remain future work
   under the same capability.
+- **Diagnostic and clock semantics** (landed 2026-08-31) — synthetic
+  diagnostic-channel and clock declarations aligned fail-closed with the
+  pinned SPO observability-profile catalogue (release `1.0.0`): candidate
+  applicability, carrier admissibility, exact evidence vocabularies,
+  clock-kind compatibility, Nyquist bounds, canonical digests; the
+  reference plan mirrors canonical practice (excluded-flux set, interferometer, Mirnov array, synthetic oscillator);
+  `computational_prototype` (ADR 0003,
+  `VALIDATION.md#diagnostic-and-clock-semantics`). No ingress is
+  declared; the SPO semantic-profile state remains `not_declared`.
 
 ## Planned (no implementation exists; ordering is not a commitment)
-1. **Diagnostic and clock semantics** — declared excluded-flux and
-   separatrix reconstruction conventions, interferometry and magnetics
-   channels, rotational-mode identification, and clock identities aligned
-   with the SCPN Phase Orchestrator semantic profile.
-2. **Safety-envelope declaration** — machine-readable operational envelope
+1. **Safety-envelope declaration** — machine-readable operational envelope
    (bank energies, density and mode margins) consumed by the CONTROL
    adapter contract.
-3. **CONTROL adapter implementation** — device-owned adapter against the
+2. **CONTROL adapter implementation** — device-owned adapter against the
    published specification, with replay fixtures and HIL evidence,
    targeting `control_research_ready` only after replay and HIL
    acceptance.
-4. **Solver seam consumption and physics migration** — versioned
+3. **Solver seam consumption and physics migration** — versioned
    consumption of exact `SCPN-FUSION-CORE` FRC seams; the architecture
    record names canonical FRC physics as a likely migration into this
    repository strictly through the family migration gate, while
    `SCPN-MIF-CORE` keeps the pulsed integration and trigger boundary.
-5. **Facility-data correlation** — preregistered acceptance contracts
+4. **Facility-data correlation** — preregistered acceptance contracts
    against identified facility or published experimental data, targeting
    `experiment_correlated` per capability.
 

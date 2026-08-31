@@ -11,9 +11,10 @@ SCPN FRC Core — Architecture summary
 # Architecture summary
 
 `SCPN-FRC-CORE` is the device-family owner for field-reversed configuration
-systems inside the SCPN Reactor Systems Research Group. The repository holds one implemented
-capability — the device configuration model at `computational_prototype`
-(`src/scpn_frc_core/`, ADR 0002) — alongside the device boundary, its
+systems inside the SCPN Reactor Systems Research Group. The repository holds two implemented capabilities at
+`computational_prototype` — the device configuration model (ADR 0002)
+and the diagnostic and clock semantics model (ADR 0003), both in
+`src/scpn_frc_core/` — alongside the device boundary, its
 ecosystem contracts, and the validation tooling that enforces both.
 
 The authoritative architecture record is
