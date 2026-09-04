@@ -57,6 +57,8 @@ REQUIRED_PATHS = (
     "docs/adr/0002-device-configuration-model.md",
     "docs/adr/0003-diagnostic-clock-semantics.md",
     "docs/adr/0005-level0-device-physics.md",
+    "docs/adr/0006-device-3d-and-cad-models.md",
+    "docs/DEVICE_3D_MODEL_CONTRACT.md",
     "reactor-domain.json",
     "requirements-dev.txt",
     "src/scpn_frc_core/__init__.py",
@@ -70,6 +72,10 @@ REQUIRED_PATHS = (
     "src/scpn_frc_core/physics/equilibrium.py",
     "src/scpn_frc_core/physics/level0.py",
     "src/scpn_frc_core/physics/stability.py",
+    "src/scpn_frc_core/geometry/__init__.py",
+    "src/scpn_frc_core/geometry/device.py",
+    "src/scpn_frc_core/geometry/model.py",
+    "src/scpn_frc_core/geometry/cad.py",
     "studio/portfolio-descriptor.json",
     "studio/portfolio-descriptor.schema.json",
     "studio/portfolio-descriptor.schema.json",
@@ -147,6 +153,16 @@ def test_manifest_declares_exact_configuration_assignment() -> None:
             "evidence_maturity": "computational_prototype",
             "evidence_pointer": "VALIDATION.md#level-0-device-physics",
         },
+        {
+            "identifier": "device_3d_model",
+            "evidence_maturity": "computational_prototype",
+            "evidence_pointer": "VALIDATION.md#device-3d-model",
+        },
+        {
+            "identifier": "device_cad_model",
+            "evidence_maturity": "computational_prototype",
+            "evidence_pointer": "VALIDATION.md#device-cad-model",
+        },
     ]
     assert manifest["claims"] == []
 
@@ -161,7 +177,7 @@ def test_descriptor_and_inventory_embed_current_manifest_digest() -> None:
     assert descriptor["source"]["manifest_sha256"] == digest
     assert inventory["source"]["manifest_sha256"] == digest
     assert descriptor["lifecycle"]["state"] == "not_federated"
-    assert inventory["implemented_capability_count"] == 3
+    assert inventory["implemented_capability_count"] == 5
 
 
 def test_no_agent_state_trees_exist() -> None:
@@ -203,3 +219,47 @@ def test_package_agrees_with_manifest_truth() -> None:
 def test_typed_package_marker_exists() -> None:
     """The PEP 561 marker is present (empty by design, so no size check)."""
     assert (REPO / "src" / "scpn_frc_core" / "py.typed").is_file()
+
+
+def test_kernel_library_pin_agrees_with_the_dependency_and_the_workflows() -> None:
+    """One commit, one version, one inventory digest: manifest, pyproject, CI."""
+    import tomllib
+
+    import scpn_reactor_kernels
+
+    manifest = load_json_object(REPO / "reactor-domain.json")
+    pin = manifest["kernel_library"]
+    assert pin["distribution"] == "scpn-reactor-kernels"
+    assert pin["kernels"] == [
+        "cad_brep_solids",
+        "cad_evidence",
+        "cad_faceting",
+        "cad_profiles",
+        "cad_step_export",
+        "geometry_mesh_contract",
+        "geometry_primitives",
+        "geometry_profiles",
+        "geometry_unit_circle",
+        "numerics_transcendental",
+    ]
+    project = tomllib.loads((REPO / "pyproject.toml").read_text(encoding="utf-8"))
+    assert project["project"]["dependencies"] == [
+        (
+            "scpn-reactor-kernels @ git+https://github.com/anulum/"
+            f"scpn-reactor-kernels.git@{pin['source_commit']}"
+        )
+    ]
+    assert project["project"]["optional-dependencies"]["cad"] == [
+        (
+            "scpn-reactor-kernels[cad] @ git+https://github.com/anulum/"
+            f"scpn-reactor-kernels.git@{pin['source_commit']}"
+        )
+    ]
+    assert scpn_reactor_kernels.__version__ == pin["version"]
+    workflows = REPO / ".github" / "workflows"
+    for name in ("reusable-static-policy.yml", "reusable-tests.yml", "pre-commit.yml"):
+        # The trailing dot is deliberately not part of the pattern: the tests
+        # workflow installs the CAD extra and spells it `-e ".[cad]"`, which
+        # is the same editable install of the same package. What the gate is
+        # for is that every workflow that imports the package installs it.
+        assert "pip install -e" in (workflows / name).read_text(encoding="utf-8"), name

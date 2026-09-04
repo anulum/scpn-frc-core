@@ -18,6 +18,25 @@ requires-python = ">=3.12"
 license = "AGPL-3.0-or-later"
 dynamic = ["version"]
 
+# The shared kernel library is pinned to one immutable commit object: the
+# device geometry consumes its unit circle, tessellation primitives, closed
+# profile of revolution, mesh contract and serialisers instead of copying
+# them. The same commit and the kernel inventory are recorded in
+# reactor-domain.json (kernel_library) and a contract test proves the two
+# pins agree.
+dependencies = [
+    "scpn-reactor-kernels @ git+https://github.com/anulum/scpn-reactor-kernels.git@7f419ea413af0e8fc051587ec0b3c83edf209c9f",
+]
+
+# The tier-G2 CAD model is an optional capability, not a runtime
+# requirement of this package: the device model, the physics and every
+# other capability work without a B-rep kernel. Declaring the library
+# extra as a hard dependency would overstate what this package needs and
+# would pull a ~1 GB back-end into every environment that installs it,
+# CI job included. It is an extra here too, naming the same commit.
+[project.optional-dependencies]
+cad = ["scpn-reactor-kernels[cad] @ git+https://github.com/anulum/scpn-reactor-kernels.git@7f419ea413af0e8fc051587ec0b3c83edf209c9f"]
+
 [tool.setuptools.dynamic]
 version = { attr = "scpn_frc_core.__version__" }
 

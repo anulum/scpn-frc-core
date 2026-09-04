@@ -13,13 +13,15 @@ from __future__ import annotations
 import math
 
 import pytest
-from physics_fixtures import (
+from geometry_fixtures import (
     ANCHOR_ACTIVE_COIL_LENGTH_M,
     ANCHOR_COIL_COUNT,
     ANCHOR_COIL_INNER_DIAMETER_M,
     ANCHOR_COIL_PITCH_M,
     ANCHOR_COIL_RADIUS_M,
     ANCHOR_FILL_DENSITY_PER_M3,
+)
+from physics_fixtures import (
     anchor_configuration,
     anchor_inputs,
     reference_configuration,

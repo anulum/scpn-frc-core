@@ -268,3 +268,107 @@ Bounded claims — what is NOT claimed:
   and no value describes or validates a real machine. Reproducing a
   number a filed source prints is an anchor on the arithmetic and nothing
   further.
+
+## Device 3D model
+
+Evidence record of the `device_3d_model` capability
+(`computational_prototype`; design record: `docs/adr/0006-device-3d-and-cad-models.md`,
+contract: `docs/DEVICE_3D_MODEL_CONTRACT.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- **The separatrix as its own published shape**, not a column:
+  `r(z) = a sqrt(1 - |z / b|^m)` from Ma et al. (arXiv:2103.00839v1,
+  equation 13). The poles are exactly zero and the midplane is exactly
+  `(0, a)`, both asserted; the profile increases strictly in `z`; and an
+  even sample count is refused because it would leave the widest point of
+  the body off the model.
+- **The ellipse reproduces its own closed form.** At `m = 2` the body is
+  an ellipsoid of revolution; the sampled volume rises monotonically
+  towards `4/3 pi a^2 b` and is within 1e-5 of it at 801 samples. The
+  bound is measured, not assumed: convergence is not clean second order
+  because the ellipse meets the axis with infinite slope, and the measured
+  deficits are 3.1e-2, 6.5e-4 and 8.3e-6 at 11, 81 and 801 samples. A
+  larger shape index gives a fuller body, which is what "racetrack-like"
+  means in the source.
+- **Five bodies in a fixed order**, each closed and outward-oriented, the
+  plasma inside the tube, the tube inside the coil bore, and the two end
+  walls meeting the coil exactly at its ends.
+- **Every envelope relation refused in the direction it is wrong**: a
+  plasma wider than the tube, a tube wider than the bore, a separatrix
+  longer than the coil, an inadmissible segment count, an even or too
+  small sample count, and a shape index below the ellipse. Every message
+  names the field and its value.
+- Canonical serialisation, digest identity, and both input digests bound
+  into the record.
+
+Anchoring — what is printed and what is declared:
+
+- **Printed** by Zhu & Wu (arXiv:2607.11908v1, Table I, as-built
+  Yingguang-1 hardware) and recovered **from the built bodies**: the
+  quartz tube radii `5.25 / 5.5 cm` as vertex coordinates of the tube
+  mesh, the coil bore `6.2 cm` as a vertex coordinate of the coil mesh,
+  and the active coil length `36 cm` as the coil's bounding-box extent.
+  The eight coils on a `4.5 cm` pitch multiply to exactly that length, and
+  that equality is exact in binary.
+- The tube wall is **derived** from the two printed radii rather than
+  written down, because their difference is not the decimal `0.0025` in
+  binary. What is exact, and what the test asserts, is that adding it back
+  reproduces the printed outer radius.
+- **Declared, and said to be declared**: the separatrix radius and length,
+  the shape index, the winding thickness, the end-wall thickness and the
+  external field. That paper's separatrix radius is a simulation result
+  printed as "approximately 1 cm", not a device dimension, and is not used
+  as an anchor value.
+
+## Device CAD model
+
+Evidence record of the `device_cad_model` capability
+(`computational_prototype`; same design record and contract).
+
+What is exercised:
+
+- The same five bodies as exact solids of revolution, each checked
+  fail-closed by the library's evidence kernel: volume and area against
+  their analytic closed forms within the measure tolerance, the faceted
+  volume within the chord-deficit bound, and the faceted volume against
+  the tier-G1 mesh of the same design within the polygon-deficit bound.
+- **The separatrix needs no new closed form**: a pole contributes no end
+  disc, so its area reference is the lateral sum alone and its volume
+  reference the same frustum sum tier G1 uses.
+- **The faceting radius excludes the poles.** A pole is a point, not a
+  circle; the bound is taken at the smallest circle the tessellation
+  actually carries. Taking the pole would divide by zero and taking the
+  midplane would assert a bound the body does not satisfy near its ends.
+- Canonical record, pinned digest in the pinned back-end environment,
+  determinism across two builds, normalised STEP bytes whose digest is
+  the digest of the file a caller writes, and refusals for a manifest of
+  the wrong schema or body count and for bodies out of order.
+
+Declared limit, measured while landing this capability:
+
+- The back-end's revolution stops reproducing the exact frustum sum when
+  two adjacent profile radii come close together. On the reference
+  fixture at 17 samples the agreement is exact to 2e-16 at `m = 2` and
+  degrades to 1.6e-4, 5.5e-5, 3.0e-4 and 3.3e-4 at `m = 2.5`, `3`, `4`
+  and `6`; a deliberately flat-topped polyline with nothing to do with an
+  FRC reproduces the same effect.
+- **The limitation is the CAD back-end's.** It is not new and not the
+  closed-profile kernel's: the open primitive of kernels ADR 0011 shows
+  the same numbers when the same shape is lifted off the axis, and tier
+  G1 builds those shapes exactly.
+- **Nothing is tuned to pass.** The tier-G2 reference sampling is chosen
+  from measurement and records the numbers it was chosen from, and a
+  shape the back-end cannot honour is refused by the evidence kernel
+  naming the body and the bound. Both are tested, including the pairing
+  that tier G1 accepts the shape tier G2 refuses.
+
+Bounded claims — what is NOT claimed:
+
+- No body is an equilibrium boundary; the separatrix is a shape function
+  evaluated at a declared index and no equilibrium equation is solved.
+- STEP determinism is claimed inside one pinned back-end environment
+  only, never across back-end versions.
+- No engineering model, material property, load, field, neutronic
+  quantity or fabrication tolerance is carried, and no value describes or
+  validates any real machine.

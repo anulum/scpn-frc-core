@@ -14,6 +14,16 @@
       "evidence_maturity": "computational_prototype",
       "evidence_pointer": "VALIDATION.md#level-0-device-physics",
       "identifier": "level0_device_physics"
+    },
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#device-3d-model",
+      "identifier": "device_3d_model"
+    },
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#device-cad-model",
+      "identifier": "device_cad_model"
     }
   ],
   "claims": [],
@@ -71,6 +81,24 @@
   "fusion_solver_seams": {
     "active": [],
     "policy": "Versioned seams from SCPN-FUSION-CORE may be consumed only after the reactor family migration gate proves exact replacement; SCPN-FUSION-CORE currently owns the shared FRC solver surfaces, and no solver code is copied into this repository."
+  },
+  "kernel_library": {
+    "distribution": "scpn-reactor-kernels",
+    "inventory_sha256": "c1db6afb2dc0f196500514bcc53305c2bc69878e6e5d61730c76e3afcdc418f6",
+    "kernels": [
+      "cad_brep_solids",
+      "cad_evidence",
+      "cad_faceting",
+      "cad_profiles",
+      "cad_step_export",
+      "geometry_mesh_contract",
+      "geometry_primitives",
+      "geometry_profiles",
+      "geometry_unit_circle",
+      "numerics_transcendental"
+    ],
+    "source_commit": "7f419ea413af0e8fc051587ec0b3c83edf209c9f",
+    "version": "0.1.0.dev0"
   },
   "license": "AGPL-3.0-or-later",
   "machine_protection": {

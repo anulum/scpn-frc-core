@@ -38,33 +38,24 @@ machine.
 
 from __future__ import annotations
 
+from geometry_fixtures import (
+    ANCHOR_COIL_RADIUS_M,
+    ANCHOR_EXTERNAL_FIELD_T,
+    ANCHOR_FILL_DENSITY_PER_M3,
+    ANCHOR_SEPARATRIX_LENGTH_M,
+    ANCHOR_SEPARATRIX_RADIUS_M,
+)
+
 from scpn_frc_core.configuration import DeviceConfiguration, RegistryBinding
 from scpn_frc_core.parameters import OperationalLimits, SeparatrixGeometry
 from scpn_frc_core.physics import DEUTERON_MASS_KG, ModelInputs
 
 REGISTRY = RegistryBinding(version="1.0.0", digest_sha256="0" * 64)
 
-#: Coil inner diameter printed by Zhu & Wu, Table I: 12.4 cm.
-ANCHOR_COIL_INNER_DIAMETER_M = 0.124
-#: Half of the printed coil inner diameter.
-ANCHOR_COIL_RADIUS_M = ANCHOR_COIL_INNER_DIAMETER_M / 2.0
-#: Active coil length printed by Zhu & Wu, Table I: 36 cm.
-ANCHOR_ACTIVE_COIL_LENGTH_M = 0.36
-#: Coil count and axial pitch printed by Zhu & Wu: eight coils, 4.5 cm.
-ANCHOR_COIL_COUNT = 8
-ANCHOR_COIL_PITCH_M = 0.045
-#: Fill density printed by Zhu & Wu, Table I: 2e15 cm^-3.
-ANCHOR_FILL_DENSITY_PER_M3 = 2.0e21
-#: Working ion printed by Zhu & Wu, Table I, for the modelled case: D.
+#: The printed hardware has one home: :mod:`geometry_fixtures`. These are
+#: re-exported here so the physics tests read them under the names they
+#: use, without a second copy of any printed value.
 ANCHOR_ION_MASS_KG = DEUTERON_MASS_KG
-
-#: Declared: the source prints no separatrix radius that is a device
-#: dimension, only a simulation result given as "approximately 1 cm".
-ANCHOR_SEPARATRIX_RADIUS_M = 0.02
-#: Declared: bounded above by the printed active coil length.
-ANCHOR_SEPARATRIX_LENGTH_M = 0.30
-#: Declared: the source prints coil currents, not a field.
-ANCHOR_EXTERNAL_FIELD_T = 1.0
 
 
 def reference_configuration() -> DeviceConfiguration:

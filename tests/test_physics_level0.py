@@ -15,8 +15,8 @@ import json
 import math
 
 import pytest
+from geometry_fixtures import ANCHOR_FILL_DENSITY_PER_M3
 from physics_fixtures import (
-    ANCHOR_FILL_DENSITY_PER_M3,
     anchor_configuration,
     anchor_inputs,
     reference_configuration,

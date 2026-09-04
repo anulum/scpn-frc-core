@@ -33,7 +33,21 @@ from scpn_frc_core.configuration import (
     configuration_from_bytes,
     configuration_from_record,
 )
-from scpn_frc_core.errors import DeviceConfigurationError, DiagnosticPlanError
+from scpn_frc_core.errors import (
+    DeviceConfigurationError,
+    DeviceGeometryError,
+    DiagnosticPlanError,
+)
+from scpn_frc_core.geometry import (
+    BODY_NAMES,
+    DeviceGeometry,
+    DeviceModel3D,
+    DeviceModelCAD,
+    build_device_cad,
+    build_device_model,
+    geometry_from_record,
+    separatrix_profile,
+)
 from scpn_frc_core.observability import (
     APPLICABLE_CANDIDATES,
     CATALOGUE_BINDING,
@@ -81,6 +95,7 @@ __version__: Final = "0.1.0.dev0"
 
 __all__ = [
     "APPLICABLE_CANDIDATES",
+    "BODY_NAMES",
     "CATALOGUE_BINDING",
     "EMPIRICAL_SE_BOUND",
     "LEVEL0_NON_CLAIMS",
@@ -97,6 +112,10 @@ __all__ = [
     "DeferredCandidate",
     "DeviceConfiguration",
     "DeviceConfigurationError",
+    "DeviceGeometry",
+    "DeviceGeometryError",
+    "DeviceModel3D",
+    "DeviceModelCAD",
     "DiagnosticChannelPlan",
     "DiagnosticPlan",
     "DiagnosticPlanError",
@@ -114,15 +133,19 @@ __all__ = [
     "SemanticCarrier",
     "SeparatrixGeometry",
     "__version__",
+    "build_device_cad",
+    "build_device_model",
     "configuration_from_bytes",
     "configuration_from_record",
     "envelope_for_plan",
     "envelope_from_bytes",
     "envelope_from_record",
+    "geometry_from_record",
     "kinetic_scale_bound",
     "level0_physics",
     "plan_from_bytes",
     "plan_from_record",
     "radial_pressure_balance",
+    "separatrix_profile",
     "verify_envelope",
 ]
