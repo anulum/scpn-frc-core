@@ -208,3 +208,63 @@ gate:
   domain (`clk_facility` root, `clk_shot` member); multi-domain rules
   are exercised by test-constructed plans. Scopes are declarations;
   `mapping_state` stays `unmapped`.
+
+## Level-0 device physics
+
+Evidence record of the `level0_device_physics` capability
+(`computational_prototype`; design record: `docs/adr/0005-level0-device-physics.md`).
+
+What is exercised, all under the 100 % statement-and-branch coverage gate:
+
+- **Radial pressure balance across the separatrix.** The plasma pressure
+  at the field null carries the whole external magnetic pressure,
+  `p_max = B_e^2 / 2 mu0`; averaging the balance over the separatrix
+  cross-section introduces the average-beta relation
+  `<beta> = 1 - x_s^2 / 2` and gives `<p>` and, with a declared particle
+  density, the summed electron and ion temperature.
+- **The empirical kinetic-scale bound.** `S* = r_s / delta_i` with the ion
+  skin depth `delta_i = c / omega_pi`, the elongation `E = l_s / (2 r_s)`,
+  their ratio, and whether the ratio sits below the bound `3.5` printed by
+  Bala et al. (arXiv:2204.07978v1, equation 14). A test drives two
+  configurations that differ only in separatrix length across the bound
+  and proves the verdict turns there.
+- **The Alfvén speed** of the same operating point, with the ordering
+  between a proton and a deuteron plasma tested rather than asserted.
+- Every refusal branch: a field, density or ion mass that is zero,
+  negative, infinite or not-a-number is refused **naming the field**, and
+  nothing is clamped.
+- Canonical serialisation (sorted keys, minimal separators, NaN and
+  infinity rejected), SHA-256 digest identity, digest stability across two
+  compositions, and digest movement when a declared input moves. The
+  canonicity test asserts idempotence of the serialisation rather than the
+  absence of a comma-space, because the non-claims are prose and contain
+  several.
+
+Anchoring — what is printed and what is declared:
+
+- **Printed** by Zhu & Wu (arXiv:2607.11908v1, Table I, as-built
+  Yingguang-1 hardware) and reproduced from the built objects: the coil
+  inner diameter `12.4 cm`, hence the coil radius `0.062 m`; the active
+  coil length `36 cm`; eight coils on a `4.5 cm` pitch; the fill density
+  `2e15 cm^-3`; the working ion. Two of these equalities are exact in
+  binary and were checked before being written: half of `0.124` is
+  `0.062`, and eight times `0.045` is `0.36`.
+- **Declared, and said to be declared**: the separatrix radius, the
+  separatrix length and the external field of the anchor fixture. That
+  paper's separatrix radius is a simulation result printed as
+  "approximately 1 cm" — not a device dimension — and is therefore not
+  used as an anchor value. The paper prints coil currents, not a field.
+
+Bounded claims — what is NOT claimed:
+
+- No equilibrium, stability, compression or transport equation is solved;
+  every number is a closed-form evaluation on a declared operating point.
+- The kinetic-scale bound is empirical and orders operating points. A
+  configuration inside the bound is **not** claimed stable, and the field
+  is named `within_bound` for that reason.
+- The split of the total temperature between electrons and ions is not
+  modelled and is not claimed.
+- No yield, gain, reactivity, confinement or breakeven statement is made,
+  and no value describes or validates a real machine. Reproducing a
+  number a filed source prints is an anchor on the arithmetic and nothing
+  further.

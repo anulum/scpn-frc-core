@@ -9,16 +9,21 @@
       "evidence_maturity": "computational_prototype",
       "evidence_pointer": "VALIDATION.md#diagnostic-and-clock-semantics",
       "identifier": "diagnostic_clock_semantics"
+    },
+    {
+      "evidence_maturity": "computational_prototype",
+      "evidence_pointer": "VALIDATION.md#level-0-device-physics",
+      "identifier": "level0_device_physics"
     }
   ],
   "claims": [],
   "evidence_maturity": "computational_prototype",
-  "implemented_capability_count": 2,
+  "implemented_capability_count": 3,
   "project": "SCPN-FRC-CORE",
   "schema": "scpn.capability-inventory.v1",
   "schema_version": "1.0.0",
   "source": {
     "manifest_path": "reactor-domain.json",
-    "manifest_sha256": "f306ac7b43c5f6b93faa363b16f11d5bb5d2974f96fff1cdd1a57c9c6e5d4550"
+    "manifest_sha256": "c3f4dfe8cc1b6453e082f66f61da66a4b91e428d787006f86d40bc837a279329"
   }
 }

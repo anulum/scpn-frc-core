@@ -22,16 +22,21 @@ repository is the designated owner of device-level truth for the
 reactor registry (field-reversed compact toroid).
 
 **Evidence maturity: `computational_prototype`** (per-capability; ADR 0002).
-Two capabilities are implemented: the device configuration model —
+Three capabilities are implemented: the device configuration model —
 validated parameter objects with documented consistency estimates,
 canonical serialisation, and a data-only SPO registry pin
-(evidence: `VALIDATION.md#device-configuration-model`) — and the
+(evidence: `VALIDATION.md#device-configuration-model`); the
 diagnostic and clock semantics model — synthetic channel and clock
 declarations aligned fail-closed with the pinned SPO observability
 catalogue (ADR 0003, evidence:
-`VALIDATION.md#diagnostic-and-clock-semantics`). No parameter set or
-channel describes any real machine or diagnostic; the claim inventory
-is empty and verified by the domain validator.
+`VALIDATION.md#diagnostic-and-clock-semantics`); and level-0 device
+physics — the radial pressure balance across the separatrix and the
+empirical `S* / E` kinetic-scale bound, evaluated in closed form on a
+validated configuration and anchored on dimensions a filed source prints
+(ADR 0005, evidence: `VALIDATION.md#level-0-device-physics`). No
+parameter set, channel or number describes any real machine or
+diagnostic; the claim inventory is empty and verified by the domain
+validator.
 
 ## Scope
 

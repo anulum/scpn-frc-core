@@ -56,6 +56,7 @@ REQUIRED_PATHS = (
     "conftest.py",
     "docs/adr/0002-device-configuration-model.md",
     "docs/adr/0003-diagnostic-clock-semantics.md",
+    "docs/adr/0005-level0-device-physics.md",
     "reactor-domain.json",
     "requirements-dev.txt",
     "src/scpn_frc_core/__init__.py",
@@ -65,6 +66,10 @@ REQUIRED_PATHS = (
     "src/scpn_frc_core/plan_envelope.py",
     "tests/data/plan_envelope_fixture.json",
     "src/scpn_frc_core/parameters.py",
+    "src/scpn_frc_core/physics/__init__.py",
+    "src/scpn_frc_core/physics/equilibrium.py",
+    "src/scpn_frc_core/physics/level0.py",
+    "src/scpn_frc_core/physics/stability.py",
     "studio/portfolio-descriptor.json",
     "studio/portfolio-descriptor.schema.json",
     "studio/portfolio-descriptor.schema.json",
@@ -137,6 +142,11 @@ def test_manifest_declares_exact_configuration_assignment() -> None:
             "evidence_maturity": "computational_prototype",
             "evidence_pointer": "VALIDATION.md#diagnostic-and-clock-semantics",
         },
+        {
+            "identifier": "level0_device_physics",
+            "evidence_maturity": "computational_prototype",
+            "evidence_pointer": "VALIDATION.md#level-0-device-physics",
+        },
     ]
     assert manifest["claims"] == []
 
@@ -151,7 +161,7 @@ def test_descriptor_and_inventory_embed_current_manifest_digest() -> None:
     assert descriptor["source"]["manifest_sha256"] == digest
     assert inventory["source"]["manifest_sha256"] == digest
     assert descriptor["lifecycle"]["state"] == "not_federated"
-    assert inventory["implemented_capability_count"] == 2
+    assert inventory["implemented_capability_count"] == 3
 
 
 def test_no_agent_state_trees_exist() -> None:

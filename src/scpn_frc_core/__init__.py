@@ -8,9 +8,10 @@
 
 """Device capability models of the SCPN field-reversed-configuration family.
 
-Public surface of the ``device_configuration_model`` and
-``diagnostic_clock_semantics`` capabilities at
-``computational_prototype`` maturity: validated parameter objects,
+Public surface of the ``device_configuration_model``,
+``diagnostic_clock_semantics`` and ``level0_device_physics`` capabilities
+at ``computational_prototype`` maturity: validated parameter objects,
+the radial pressure balance and the empirical kinetic-scale bound,
 synthetic diagnostic and clock declarations aligned with the pinned SPO
 observability catalogue, documented consistency estimates, canonical
 serialisation with SHA-256 digests, and data-only pins to the SPO
@@ -55,6 +56,19 @@ from scpn_frc_core.parameters import (
     OperationalLimits,
     SeparatrixGeometry,
 )
+from scpn_frc_core.physics import (
+    EMPIRICAL_SE_BOUND,
+    LEVEL0_NON_CLAIMS,
+    LEVEL0_SCHEMA,
+    LEVEL0_SCHEMA_VERSION,
+    KineticScaleBound,
+    Level0Physics,
+    ModelInputs,
+    RadialPressureBalance,
+    kinetic_scale_bound,
+    level0_physics,
+    radial_pressure_balance,
+)
 from scpn_frc_core.plan_envelope import (
     PlanEnvelope,
     envelope_for_plan,
@@ -68,6 +82,10 @@ __version__: Final = "0.1.0.dev0"
 __all__ = [
     "APPLICABLE_CANDIDATES",
     "CATALOGUE_BINDING",
+    "EMPIRICAL_SE_BOUND",
+    "LEVEL0_NON_CLAIMS",
+    "LEVEL0_SCHEMA",
+    "LEVEL0_SCHEMA_VERSION",
     "OWNED_CONFIGURATIONS",
     "PROLATE_MIN_ELONGATION",
     "WALL_PROXIMITY_MAX_XS",
@@ -83,10 +101,14 @@ __all__ = [
     "DiagnosticPlan",
     "DiagnosticPlanError",
     "FrameKind",
+    "KineticScaleBound",
+    "Level0Physics",
+    "ModelInputs",
     "ObservabilityBinding",
     "ObservabilityClass",
     "OperationalLimits",
     "PlanEnvelope",
+    "RadialPressureBalance",
     "ReferenceFrame",
     "RegistryBinding",
     "SemanticCarrier",
@@ -97,7 +119,10 @@ __all__ = [
     "envelope_for_plan",
     "envelope_from_bytes",
     "envelope_from_record",
+    "kinetic_scale_bound",
+    "level0_physics",
     "plan_from_bytes",
     "plan_from_record",
+    "radial_pressure_balance",
     "verify_envelope",
 ]
