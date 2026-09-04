@@ -71,7 +71,7 @@
     "manifest_path": "reactor-domain.json",
     "manifest_schema": "scpn.reactor-domain.v1",
     "manifest_schema_version": "1.0.0",
-    "manifest_sha256": "bd5886bf62b448b0acab3b43fb67d2cd24beaee34012ec80eb73648e02703c12",
+    "manifest_sha256": "7809ba75080ad923ed5364cc1b526ed193d70bab1ec45cc95eb25f4d01c0ca30",
     "repository": "SCPN-FRC-CORE"
   },
   "spo_registry": {
