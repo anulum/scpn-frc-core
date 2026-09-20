@@ -14,6 +14,14 @@ SCPN FRC Core — CHANGELOG
 
 ### Added
 
+- Commit-trailer guard: `--audit-range REVISION_RANGE` applies the commit
+  message policy to commits that already exist, exiting `0` for a compliant
+  range, `1` naming each failing commit, and `2` when the audit cannot run.
+  The range must be a safe literal, `git` is resolved to an absolute path and
+  invoked without a shell, and history is only ever read. It is an operator
+  command rather than a gate, because commits written before the hook existed
+  cannot retroactively satisfy it.
+
 - Diagnostic-plan depth: per-channel signal inventories, frame
   transformations with a fixed kind-admissibility table and connectivity
   rule, and a clock topology partitioning the physical clocks into rooted

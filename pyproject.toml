@@ -146,8 +146,11 @@ max-branches = 21
 max-statements = 54
 
 [tool.ruff.lint.per-file-ignores]
-# assert is the pytest contract surface
-"tests/*" = ["S101"]
+# assert is the pytest contract surface; the trailer-guard range tests build a
+# throwaway Git repository by running a fixed `git` vector with shell=False and
+# an absolute path from shutil.which, so the untrusted input S603 warns about
+# does not exist there
+"tests/*" = ["S101", "S603"]
 # a parametrised test receives its boolean case from pytest, which supplies
 # every parameter by name, so the signature cannot be keyword-only and the
 # boolean is the case under test rather than a flag a caller might confuse
@@ -156,6 +159,12 @@ max-statements = 54
 # preflight executes fixed argument vectors of repository gates without a
 # shell and without untrusted input (scope of S603/S607)
 "tools/preflight.py" = ["S603", "S607"]
+# the trailer guard's range audit runs `git` resolved to an absolute path by
+# shutil.which, with every argument a separate vector element and shell=False,
+# and it refuses a revision range that does not match SAFE_RANGE_RE before the
+# call — so the value S603 warns about cannot reach a shell or be read as an
+# option (scope of S603)
+"tools/check_commit_trailers.py" = ["S603"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"

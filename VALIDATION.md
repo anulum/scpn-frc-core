@@ -30,6 +30,27 @@ followed by the evidence record of each implemented capability.
 | Documentation | `python3 tools/preflight.py --only docs` | UTF-8 readability and relative-link integrity of every Markdown file |
 | Orchestrated | `python3 tools/preflight.py` | fail-closed run of all gates above |
 
+Two checks run at commit time rather than as gate commands. The
+`commit-msg` hook validates the pending commit message
+(`python3 tools/check_commit_trailers.py <file>`): exactly one authorship
+line, exactly one vendor-neutral `Seat:` trailer immediately preceding it,
+no superseded `Co-Authored-By:` trailer, and no self-praise term in the
+subject. The `pre-push` hook runs the orchestrated preflight above.
+
+The same policy can be applied to commits that already exist:
+
+```bash
+python3 tools/check_commit_trailers.py --audit-range origin/main..HEAD
+```
+
+It exits `0` when every commit in the range complies, `1` naming each
+commit that does not, and `2` when the audit could not run — an
+unresolvable range, a revision range that is not a safe literal, or no
+`git` on the path. It reads history and never rewrites it: a finding on an
+old commit is a finding, not a demand to rebase. It is an operator command,
+deliberately not a gate, because commits written before the hook existed
+cannot retroactively satisfy it.
+
 ## Workflow gates
 
 Definitions are present in-repository; they run on the hosted platform
