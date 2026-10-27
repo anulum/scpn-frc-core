@@ -262,4 +262,6 @@ def test_kernel_library_pin_agrees_with_the_dependency_and_the_workflows() -> No
         # workflow installs the CAD extra and spells it `-e ".[cad]"`, which
         # is the same editable install of the same package. What the gate is
         # for is that every workflow that imports the package installs it.
-        assert "pip install -e" in (workflows / name).read_text(encoding="utf-8"), name
+        assert "pip install --no-deps -e ." in (workflows / name).read_text(
+            encoding="utf-8"
+        ), name
