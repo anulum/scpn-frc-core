@@ -150,8 +150,11 @@ What is exercised, all under the 100 % statement-and-branch coverage gate:
   release is rejected.
 - A reference plan mirroring canonical practice with synthetic
   declarations: excluded-flux set, interferometer, Mirnov array, synthetic oscillator, each bound to its clock domain.
-- A documented advisory band check with its source stated in the code:
-  the FRC rotational n=2 instability scale of tens of kHz (Tuszewski 1988); findings are reported, never clamped.
+- Advisory checks against declared synthetic design bounds: an n=2
+  rotational-mode band of tens of kHz and a ~10 ms lifetime bound. They were
+  earlier credited to Tuszewski (1988), which is not on file, so they were
+  never checked against it; the attribution was removed (2026-10-31).
+  Findings are reported, never clamped.
 - Canonical serialisation (sorted keys, NaN/infinity rejected on both
   emit and parse), SHA-256 digest identity, and a strict round-trip
   parser that refuses unknown fields.

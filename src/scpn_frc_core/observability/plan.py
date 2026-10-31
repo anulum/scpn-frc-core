@@ -416,8 +416,9 @@ class DiagnosticPlan:
                         message=(
                             f"declared rotational-mode band "
                             f"{channel.max_signal_frequency_hz:.1f} "
-                            "Hz is outside the FRC rotational n=2 instability "
-                            "scale of tens of kHz (Tuszewski 1988)"
+                            "Hz is outside the declared n=2 rotational-mode "
+                            "design band of tens of kHz (synthetic; not "
+                            "checked against a source on file)"
                         ),
                     )
                 )
@@ -428,8 +429,8 @@ class DiagnosticPlan:
                         message=(
                             "acquisition window "
                             f"{channel.acquisition_duration_s:.2e} s is "
-                            "longer than the FRC lifetime scale of up to ~10 ms "
-                            "(Tuszewski 1988)"
+                            "longer than the declared ~10 ms lifetime bound "
+                            "(synthetic; not checked against a source on file)"
                         ),
                     )
                 )

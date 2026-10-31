@@ -48,7 +48,10 @@ The `closed.recurrent_transient` candidate is catalogue-restricted to the tokama
    facility monotonic clock, noncyclic to either non-simulation clock).
 4. Timing is fail-closed where physics fixes the bound: the Nyquist
    criterion for cyclic channels. The device-typical band check is
-   advisory only: the FRC rotational n=2 instability scale of tens of kHz (M. Tuszewski, Nucl. Fusion 28 (1988) 2033).
+   advisory only and compares against a declared synthetic design band of
+   tens of kHz for the rotational n=2 mode. An earlier version credited it
+   to M. Tuszewski, Nucl. Fusion 28 (1988) 2033, which is not on file, so
+   the band was never checked against it (attribution removed 2026-10-31).
 5. The reference plan mirrors canonical practice with synthetic
    declarations: an excluded-flux radius set and a line-density interferometer (noncyclic against the bank-trigger epoch), a Mirnov array for rotational-mode activity (derived cyclic against the facility clock), and the model-owned synthetic oscillator (simulation clock). Every applicable candidate must be
    planned or explicitly deferred with a reason; every channel is
