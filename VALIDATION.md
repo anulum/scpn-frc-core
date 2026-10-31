@@ -104,7 +104,11 @@ What is exercised, all under the 100 % statement-and-branch coverage gate:
   radius (the hard `x_s < 1` invariant) — every rejection branch is
   tested.
 - The FRC average-beta relation `<beta> = 1 - x_s^2 / 2` (Tuszewski,
-  Nucl. Fusion 28 (1988) 2033) as a documented derived quantity.
+  Nucl. Fusion 28 (1988) 2033) as a documented derived quantity. That
+  review is not freely available, so the relation is not checked against a
+  filed page; the filed Bala et al. (arXiv:2204.07978v1) use the same factor
+  `1 - sigma^2 / 2`, `sigma = R_s / R_W`, in their equations 16 and 17
+  without naming it.
 - Advisory consistency findings with documented bounds, reported and
   never clamped: oblate geometry (elongation below one; FRC equilibria
   are prolate) and a separatrix within five percent of the coil radius.
@@ -268,7 +272,8 @@ Anchoring — what is printed and what is declared:
 - **Printed** by Zhu & Wu (arXiv:2607.11908v1, Table I, as-built
   Yingguang-1 hardware) and reproduced from the built objects: the coil
   inner diameter `12.4 cm`, hence the coil radius `0.062 m`; the active
-  coil length `36 cm`; eight coils on a `4.5 cm` pitch; the fill density
+  coil length `36 cm`; eight coils on a `4.5 cm` pitch (the pitch is printed
+  in their text, p. 9, not in Table I); the fill density
   `2e15 cm^-3`; the working ion. Two of these equalities are exact in
   binary and were checked before being written: half of `0.124` is
   `0.062`, and eight times `0.045` is `0.36`.

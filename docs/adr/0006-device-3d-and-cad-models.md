@@ -96,7 +96,8 @@ the part.
    the as-built Yingguang-1 hardware Zhu & Wu print in Table I of
    arXiv:2607.11908v1: the coil inner diameter `12.4 cm`, the quartz tube
    radii `5.25 / 5.5 cm`, the active coil length `36 cm`, and eight coils
-   of `3.5 cm` on a `4.5 cm` pitch. Each of those is proven recoverable
+   of `3.5 cm` on a `4.5 cm` pitch (the pitch is printed in their text, p. 9).
+   Each of those is proven recoverable
    **from the built bodies** — vertex coordinates and bounding boxes of
    the meshes and the solids — not from the configuration that fed them.
 

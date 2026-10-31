@@ -147,9 +147,11 @@ class SeparatrixGeometry:
         Returns
         -------
         float
-            ``<beta> = 1 - x_s^2 / 2`` (Tuszewski, NF 28 (1988) 2033);
-            an equilibrium average-beta relation, not a performance
-            claim.
+            ``<beta> = 1 - x_s^2 / 2`` (Tuszewski, NF 28 (1988) 2033,
+            not freely available; the filed Bala et al.,
+            arXiv:2204.07978v1, use the same factor in their equations
+            16-17); an equilibrium average-beta relation, not a
+            performance claim.
         """
         return 1.0 - self.xs_ratio**2 / 2.0
 

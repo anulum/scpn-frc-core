@@ -67,7 +67,8 @@ ANCHOR_QUARTZ_WALL_THICKNESS_M = (
 )
 #: Active coil length printed by Zhu & Wu, Table I: 36 cm.
 ANCHOR_ACTIVE_COIL_LENGTH_M = 0.36
-#: Coil count, width and axial pitch printed by Zhu & Wu, Table I.
+#: Coil count and width printed by Zhu & Wu, Table I; the axial pitch in their
+#: text, p. 9 ("stacked on a 4.5-cm axial pitch").
 ANCHOR_COIL_COUNT = 8
 ANCHOR_COIL_WIDTH_M = 0.035
 ANCHOR_COIL_PITCH_M = 0.045

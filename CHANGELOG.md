@@ -42,6 +42,11 @@ SCPN FRC Core — CHANGELOG
 
 ### Changed
 
+- Source citations match the filed pages: the `4.5 cm` coil pitch is printed
+  in the text of Zhu & Wu (p. 9), not in their Table I, and the average-beta
+  relation, cited to a review that is not freely available, now says so and
+  names the filed paper that uses the same factor. No value changes.
+
 - The physical constants name their edition: the vacuum permeability, the
   vacuum permittivity and both ion masses are CODATA 2018 values (each
   differs from CODATA 2022 by about `1e-9` relative or less); the elementary

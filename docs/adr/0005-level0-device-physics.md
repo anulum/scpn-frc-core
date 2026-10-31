@@ -74,7 +74,8 @@ are now filed with their digests:
 4. **Anchoring.** The fixtures carry two pairs. The reference pair is
    synthetic and round. The anchor pair is built from what Zhu & Wu print:
    the coil inner diameter `12.4 cm`, the active coil length `36 cm`, the
-   eight coils on a `4.5 cm` pitch, the fill density `2e15 cm^-3` and the
+   eight coils on a `4.5 cm` pitch (printed in their text, p. 9, not in
+   Table I), the fill density `2e15 cm^-3` and the
    working ion. Two of the anchor's equalities are exact in binary and
    were checked before they were written: half of `0.124` is `0.062`, and
    eight times `0.045` is `0.36`.
