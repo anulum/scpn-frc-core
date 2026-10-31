@@ -34,13 +34,14 @@ from scpn_frc_core.configuration import DeviceConfiguration
 from scpn_frc_core.errors import DeviceConfigurationError
 from scpn_frc_core.parameters import require_positive
 
-#: Vacuum permeability, SI, CODATA.
+#: Vacuum permeability in H/m, CODATA 2018 (measured since the 2019 SI revision;
+#: CODATA 2022 is about 6.8e-10 relative lower).
 MU0: Final = 1.25663706212e-6
 #: Elementary charge in coulomb, exact by the 2019 SI redefinition.
 ELEMENTARY_CHARGE_C: Final = 1.602176634e-19
-#: Proton rest mass in kilogram, CODATA.
+#: Proton rest mass in kilogram, CODATA 2018 (CODATA 2022: about 1.4e-9 higher).
 PROTON_MASS_KG: Final = 1.67262192369e-27
-#: Deuteron rest mass in kilogram, CODATA.
+#: Deuteron rest mass in kilogram, CODATA 2018 (CODATA 2022: about 1.3e-9 higher).
 DEUTERON_MASS_KG: Final = 3.3435837724e-27
 
 

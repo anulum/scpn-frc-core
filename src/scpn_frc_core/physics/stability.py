@@ -38,7 +38,8 @@ from scpn_frc_core.physics.equilibrium import (
     ELEMENTARY_CHARGE_C,
 )
 
-#: Vacuum permittivity in farad per metre, CODATA.
+#: Vacuum permittivity in farad per metre, CODATA 2018 (CODATA 2022: about
+#: 6.8e-10 relative higher).
 VACUUM_PERMITTIVITY_F_PER_M: Final = 8.8541878128e-12
 #: Speed of light in vacuum, metre per second, exact by SI definition.
 SPEED_OF_LIGHT_M_PER_S: Final = 299792458.0

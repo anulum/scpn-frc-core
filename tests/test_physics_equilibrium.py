@@ -138,3 +138,15 @@ def test_alfven_speed_refuses_each_argument_in_the_direction_it_is_wrong(
     """Each refusal names the field that is wrong."""
     with pytest.raises(DeviceConfigurationError, match=field_name):
         alfven_speed_m_s(field, density, mass)
+
+
+def test_constants_are_the_codata_2018_editions_with_documented_offsets() -> None:
+    """mu0 and both masses are CODATA 2018; CODATA 2022 differs as documented."""
+    assert MU0 == 1.25663706212e-6
+    assert -7.0e-10 < (1.25663706127e-6 - MU0) / MU0 < -6.5e-10
+    assert ELEMENTARY_CHARGE_C == 1.602176634e-19
+    assert PROTON_MASS_KG == 1.67262192369e-27
+    assert DEUTERON_MASS_KG == 3.3435837724e-27
+    assert 1.3e-9 < (1.67262192595e-27 - PROTON_MASS_KG) / PROTON_MASS_KG < 1.4e-9
+    deuteron = (3.3435837768e-27 - DEUTERON_MASS_KG) / DEUTERON_MASS_KG
+    assert 1.3e-9 < deuteron < 1.35e-9

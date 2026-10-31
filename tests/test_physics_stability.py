@@ -187,3 +187,14 @@ def test_anchor_density_reaches_the_bound_through_the_built_record() -> None:
         ANCHOR_FILL_DENSITY_PER_M3, DEUTERON_MASS_KG
     )
     assert bound.elongation == 7.5
+
+
+def test_permittivity_is_the_codata_2018_edition() -> None:
+    """eps0 is CODATA 2018, consistent with the CODATA 2018 mu0 and exact c."""
+    from scpn_frc_core.physics.equilibrium import MU0
+
+    assert VACUUM_PERMITTIVITY_F_PER_M == 8.8541878128e-12
+    gap = (8.8541878188e-12 - VACUUM_PERMITTIVITY_F_PER_M) / VACUUM_PERMITTIVITY_F_PER_M
+    assert 6.5e-10 < gap < 7.0e-10
+    product = MU0 * VACUUM_PERMITTIVITY_F_PER_M * SPEED_OF_LIGHT_M_PER_S**2
+    assert abs(product - 1.0) < 1.0e-12

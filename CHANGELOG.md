@@ -42,6 +42,12 @@ SCPN FRC Core — CHANGELOG
 
 ### Changed
 
+- The physical constants name their edition: the vacuum permeability, the
+  vacuum permittivity and both ion masses are CODATA 2018 values (each
+  differs from CODATA 2022 by about `1e-9` relative or less); the elementary
+  charge and the speed of light are exact SI values. No value changes; tests
+  bind each edition and offset.
+
 - `scpn_frc_core.observability` is now a package with one module per
   responsibility — vocabulary, catalogue binding, frames, clocks, signals and
   channels, plan composition, record parsing — behind the unchanged public
