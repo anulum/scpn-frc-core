@@ -35,8 +35,8 @@ SCPN FRC Core — CHANGELOG
   ecosystem benchmark standard, timing the closed forms and the composed
   record on the Python floor, with a committed local artefact, and
   `docs/benchmarks.md` stating the computation contract of every kernel and
-  the backend status: Python floor only, the native decision of audit plan
-  Q01 open with the owner. `benchmarks/` joins the typed cohort and the
+  the backend status: Python floor only, the decision on a native backend
+  open with the project owner. `benchmarks/` joins the typed cohort and the
   enrolled surfaces.
 
 - README badge block for the evidence this repository has earned: the CI,
