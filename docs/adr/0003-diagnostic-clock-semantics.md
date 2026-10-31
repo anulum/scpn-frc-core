@@ -29,7 +29,8 @@ The `closed.recurrent_transient` candidate is catalogue-restricted to the tokama
 ## Decision
 
 1. The capability `diagnostic_clock_semantics` is implemented as a
-   declaration model (`src/scpn_frc_core/observability.py`): frozen
+   declaration model (`src/scpn_frc_core/observability/`, one module per
+   responsibility behind the package facade): frozen
    `ClockModel`, `DiagnosticChannelPlan`, `DeferredCandidate`, and
    `DiagnosticPlan` objects with fail-closed invariants, an
    advisory-only consistency report, canonical serialisation with
