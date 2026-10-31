@@ -90,6 +90,8 @@ SCPN-CONTROL ──admitted ControlAction──► independent machine protectio
 | `capability-inventory.json` | generated inventory of the five implemented capabilities |
 | `src/scpn_frc_core/` | the package: configuration, observability, plan envelope, level-0 physics and the device geometry tiers |
 | `docs/DEVICE_3D_MODEL_CONTRACT.md` | producer-owned contract of the device model and its STEP export |
+| `benchmarks/` | level-0 physics benchmark and its committed local artefact |
+| `docs/benchmarks.md` | computation contract of the level-0 kernels, backend status and measured numbers |
 | `docs/CONTROL_ADAPTER_SPECIFICATION.md` | device-owned adapter contract |
 | `docs/THREAT_MODEL.md` | assets, trust boundaries, misuse paths |
 | `docs/adr/0001-repository-boundary.md` | boundary decision record |

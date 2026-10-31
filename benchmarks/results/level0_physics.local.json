@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-10-31T01:32:16.002518+00:00",
+  "label": "local",
+  "parameters": {
+    "points": 20000,
+    "record_points": 2000,
+    "repeats": 20,
+    "warmup": 3
+  },
+  "platform": {
+    "commit": "f4d2d0a5bd80f6a60feb4ea5367aa42bd32ab569",
+    "cpu_model": "11th Gen Intel(R) Core(TM) i5-11600K @ 3.90GHz",
+    "isolated_cores": false,
+    "load_average_1min_at_start": "2.17",
+    "machine": "x86_64",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "results": [
+    {
+      "backend": "python_floor",
+      "name": "closed_forms",
+      "stats": {
+        "max_us_per_point": 0.8634388999999999,
+        "mean_us_per_point": 0.63090072,
+        "min_us_per_point": 0.5724979,
+        "p50_us_per_point": 0.6006564,
+        "p95_us_per_point": 0.7620603,
+        "p99_us_per_point": 0.8634388999999999,
+        "throughput_points_per_s": 1664845.3258801538
+      },
+      "status": "measured"
+    },
+    {
+      "backend": "rust_native",
+      "name": "closed_forms",
+      "stats": null,
+      "status": "unavailable: this package has no native crate; the level-0 kernels are closed forms using + - * / and the correctly rounded sqrt only, and the native decision of audit plan Q01 awaits the owner"
+    },
+    {
+      "backend": "python_floor",
+      "name": "level0_record",
+      "stats": {
+        "max_us_per_point": 30.5075285,
+        "mean_us_per_point": 24.36994075,
+        "min_us_per_point": 22.646442999999998,
+        "p50_us_per_point": 24.343496,
+        "p95_us_per_point": 25.87593,
+        "p99_us_per_point": 30.5075285,
+        "throughput_points_per_s": 41078.73413087422
+      },
+      "status": "measured"
+    },
+    {
+      "backend": "rust_native",
+      "name": "level0_record",
+      "stats": null,
+      "status": "unavailable: this package has no native crate; the level-0 kernels are closed forms using + - * / and the correctly rounded sqrt only, and the native decision of audit plan Q01 awaits the owner"
+    }
+  ],
+  "schema": "scpn-frc-core.level0-physics-benchmark.v1"
+}

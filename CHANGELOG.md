@@ -31,6 +31,14 @@ SCPN FRC Core — CHANGELOG
 
 ### Added
 
+- A level-0 physics benchmark (`benchmarks/level0_physics.py`) per the
+  ecosystem benchmark standard, timing the closed forms and the composed
+  record on the Python floor, with a committed local artefact, and
+  `docs/benchmarks.md` stating the computation contract of every kernel and
+  the backend status: Python floor only, the native decision of audit plan
+  Q01 open with the owner. `benchmarks/` joins the typed cohort and the
+  enrolled surfaces.
+
 - README badge block for the evidence this repository has earned: the CI,
   CodeQL, pre-commit, security-audit and docs workflows on `main`, the
   AGPL-3.0-or-later licence, the commercial licence route and GitHub
